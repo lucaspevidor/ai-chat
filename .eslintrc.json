@@ -1,3 +1,20 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "eol-last": ["error", "always"],
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "no-multiple-empty-lines": ["error", { "max": 2 }],
+    "no-trailing-spaces": ["error"],
+    "quotes": ["error", "double"],
+    "semi": ["error", "always"],
+    "semi-spacing": ["error", { "before": false, "after": true }],
+    "array-bracket-spacing": ["error", "never"],
+    "array-element-newline": ["error", {"minItems": 5}],        
+    "array-bracket-newline": ["error", {"minItems": 5}],
+
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-closing-bracket-location": ["error", "tag-aligned"],
+    "no-unused-vars": "off"
+  }
 }
