@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea, ScrollViewport } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
+import { useSession, signIn } from "next-auth/react";
+import { redirect } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 let messages = [
@@ -40,6 +42,14 @@ const App = () => {
   const [msgContent, setMsgContent] = useState("");
   const [shouldScrollToBottom, setShouldScrollToBottom] = useState(false);
 
+  const {data: session, status} = useSession();
+
+  useEffect(() => {
+    console.log(status);
+    if (status === "unauthenticated")
+      signIn();
+  }, [status]);
+
   function sendMsg() {
     if (msgContent.trim() !== "") {
       const newMsg = {
@@ -64,7 +74,6 @@ const App = () => {
 
   function scrollToBottom() {
     if (messagesRef.current) {
-      console.log(messagesRef.current.scrollTop);
       messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
     }
   }
