@@ -45,7 +45,6 @@ const App = () => {
   const {data: session, status} = useSession();
 
   useEffect(() => {
-    console.log(status);
     if (status === "unauthenticated")
       signIn();
   }, [status]);
@@ -53,7 +52,7 @@ const App = () => {
   function sendMsg() {
     if (msgContent.trim() !== "") {
       const newMsg = {
-        sender: "Lucas",
+        sender: session?.user?.name?.split(" ")[0],
         content: msgContent.trim(),
         time: new Date().toLocaleTimeString("pt-BR", {hour: "2-digit", minute: "2-digit"}),
       };
@@ -79,7 +78,7 @@ const App = () => {
   }
 
   return (
-    <div className="flex flex-col p-5 h-full max-w-4xl">
+    <div className="flex flex-col p-5 h-full max-w-4xl min-h-[20rem]">
       <ScrollArea className="w-full flex-1 bg-slate-100 rounded-lg ring-1 ring-slate-200">
         <ScrollViewport ref={messagesRef} className="scroll-smooth">
           <div>

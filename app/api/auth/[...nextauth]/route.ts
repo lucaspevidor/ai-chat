@@ -28,15 +28,16 @@ const authOptions: NextAuthOptions = {
 
       const user = response.data;
 
-      console.log({user});
-
       if (user) {
         return user;
       }
 
       return null;
-    }
+    },
   })],
+  pages:{
+    signIn: "/api/auth/signIn"
+  }
 };
 
 const handler = NextAuth(authOptions);

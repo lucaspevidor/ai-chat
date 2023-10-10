@@ -14,7 +14,7 @@ const Message = (props: IMessageProps) => {
 
   return (
     <div className={cn(
-      "flex flex-col gap-1 max-w-[18rem] bg-gradient-to-br from-neutral-900 to-neutral-800 rounded-xl shadow-xl shadow-black/10 p-2",
+      "flex flex-col gap-1 min-w-[6rem] max-w-[18rem] bg-gradient-to-br from-neutral-900 to-neutral-800 rounded-xl shadow-xl shadow-black/10 p-2",
       accent && "from-blue-600 to-blue-500",
       "message"
     )}
